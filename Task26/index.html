@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="mountains.js"></script>
+  <script src="chapter/13_dom.js"></script>
+</head>
+<body>
+
+
+<body style="min-height: 200px">
+
+<img src="cat.png" id="cat" style="position: absolute">
+<img src="hat.png" id="hat" style="position: absolute">
+
+  <script>
+
+    // your code
+	
+var angle = 0;
+var prTime = null;
+var center = {x: 300, y:30};
+var startAngle = Math.PI;
+
+//animation
+function animate(time) {
+if (prTime != null)
+  angle += (time - prTime) * 0.001;
+prTime = time;
+
+//parameters
+cat.style.top = (Math.sin(angle) * 20 + center.y) + "px";
+cat.style.left = (Math.cos(angle) * 200 + center.x) + "px";
+hat.style.top = (Math.sin(startAngle+angle) * 20 + center.y) + "px";
+hat.style.left = (Math.cos(startAngle+angle) * 200 + center.x) + "px";
+
+//call animation
+requestAnimationFrame(animate);
+}
+requestAnimationFrame(animate);
+
+  </script>
+
+</body>
+</html>
